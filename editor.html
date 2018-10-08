@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>editor</title>
+	<meta charset="utf-8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.js"></script>
+	<style>
+		body {
+			background: pink;
+		}
+		#id-input-src {
+			position: absolute;
+			right: 20%;
+			width: 500px;
+			height: 300px;
+			border: 1px solid gray;
+		}
+		.editor-result {
+			width: 500px;
+			height: 300px;
+			border: 1px solid gray;
+		}
+	</style>
+</head>
+<body>
+	<div class='container'>
+		<textarea id='id-input-src'></textarea>
+		<div class='editor-result'></div>
+	</div>
+	<script>
+		var e = sel => document.querySelector(sel)
+		e('#id-input-src').addEventListener('input', function(event) {
+			var src = event.target.value
+			var md = new Remarkable()
+			var html = md.render(src)
+			e('.editor-result').innerHTML = html
+		})
+	</script>
+
+</body>
+</html>
